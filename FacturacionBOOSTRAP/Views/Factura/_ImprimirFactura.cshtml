@@ -1,0 +1,66 @@
+﻿@model FacturacionBOOSTRAP.Models.FacturaModel
+
+@{
+    Layout = null;
+}
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+
+<!--Mostramos el estilo-->
+<link rel="stylesheet" href="~/Content/BusquedaEnTabla.css" />
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<div class="container-fluid">
+    <table class="table" style="border-color:#4d394b;">
+        <tr>
+            <th>Factura: @Model.NumeroFactura.ToString()</th>
+            <th></th>
+            <th></th>
+            <th>Cliente: @Model.NumeroCliente.ToString() - @Model.NombreCliente</th>
+        </tr>
+        <tr>
+            <th>Fecha: @Model.Fecha.ToString("dd/MM/yyyy")</th>
+            <th></th>
+            <th></th>
+            <th>Vendedor: @Model.NickUsuario.ToString()</th>
+        </tr>
+
+        <tr>
+            <th>Codigo producto</th>
+            <th>Descripcion</th>
+            <th>Cantidad</th>
+            <th>Sub-total</th>
+        </tr>
+        @foreach (FacturacionBOOSTRAP.Models.DetalleFacturaModel item in Model.ListaDetalle)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdProducto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreMarca)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cantidad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubTotal)
+                </td>
+            </tr>
+        }
+        <tr>
+            <th></th>
+            <th></th>
+            <th>Total:</th>
+            <th>@Model.Total.ToString()</th>
+        </tr>
+
+    </table>
+</div>

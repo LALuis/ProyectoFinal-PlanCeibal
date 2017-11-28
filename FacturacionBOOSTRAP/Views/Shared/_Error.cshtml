@@ -1,0 +1,25 @@
+﻿<!--Importamos el estilo de los iconos-->
+<link rel="stylesheet" href="~/Content/EstiloLogos.css" />
+
+<div class="jumbotron" style="background-color:#4d394b;">
+    <h1 style="color:white; text-align:center;">Error al procesar la solicitud</h1>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <span class="glyphicon glyphicon-wrench" style="font-size:2000%; color:#4d394b;"></span>
+        </div>
+        <div class="col-md-4 text-center">
+            <h1>Estamos trabajando para solucionarlo</h1>
+            <br />
+            <h3>Por favor, intenta nuevamente mas tarde.</h3>
+            <button class="btn btn-default">
+                @Html.Action("Index", "Home")
+            </button>
+        </div>
+        <div class="col-md-4 text-center">
+            <span class="glyphicon glyphicon-wrench" style="font-size:2000%; color:#4d394b;"></span>
+        </div>
+    </div>
+</div>

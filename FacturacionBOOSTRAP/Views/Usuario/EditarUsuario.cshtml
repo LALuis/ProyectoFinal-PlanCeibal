@@ -1,0 +1,73 @@
+﻿@model FacturacionBOOSTRAP.Models.UsuarioModel
+
+@{
+    ViewBag.Title = "SF - Editar Usuario";
+}
+
+
+<!--Titulo de la vista-->
+<div class="jumbotron" style="background-color:#4d394b;">
+    <h1 style="color:white; text-align:center;">Editar Usuario</h1>
+    <p style="color:white; text-align:center;">Complete los campos para editar un usuario</p>
+</div>
+
+<!--Importamos el estilo de los iconos-->
+<link rel="stylesheet" href="~/Content/EstiloLogos.css" />
+
+<!--Formulario donde edita el cliente-->
+@using (Html.BeginForm("EditarUsuario", "Usuario"))
+{
+    @Html.AntiForgeryToken()
+
+    <!--El id de usuario no se puede editar, por tanto mantenemos el que ya existe-->
+    @Html.HiddenFor(m => Model.Usuario)
+
+    <div class="container-fluid text-center text-center">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <br>
+        <div class="row">
+            <div class="col-sm-4">
+                <span class="glyphicon glyphicon-user logo"></span>
+                <h4>Nombre de Usuario:</h4>
+                <div class="form-group">
+                    @Html.TextBoxFor(model => model.Usuario, new { @class = "form-control col-md-2", disabled = "disabled;" })
+                </div>
+            </div>
+            <div class="col-sm-4 text-center">
+                <span class="glyphicon glyphicon-lock logo"></span>
+                <h4>Contraseña:</h4>
+                <div class="form-group text-center">
+                    @Html.EditorFor(model => model.Contrasena, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Contrasena, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <span class="glyphicon glyphicon-eye-open logo"></span>
+                <h4>Es administrador?</h4>
+                <div class="checkbox" style="margin-left:30px;">
+                    @Html.EditorFor(model => model.EsAdmin)
+                    @Html.ValidationMessageFor(model => model.EsAdmin, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <br />
+
+    <div class="row">
+        <!--Boton de guardado-->
+        <div class="form-group col-md-offset-5 media-middle">
+            <input type="submit" value="Guardar" class="btn btn-success" />
+            <button class="btn btn-default">
+                @Html.ActionLink("Volver", "MostrarUsuarios", "Usuario")
+            </button>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

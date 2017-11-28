@@ -1,0 +1,10 @@
+﻿/*Definimos el borde de la tabla y su color*/
+.table {
+    border: solid;
+    border-color: #4d394b;
+}
+    /*Coloreamos la cabecera*/
+    .table th {
+        background-color: #4d394b;
+        color: #ffffff;
+    }

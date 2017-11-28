@@ -1,0 +1,52 @@
+﻿@model FacturacionBOOSTRAP.Models.UsuarioModel
+
+@{
+    ViewBag.Title = "SF - Detalle de Usuario";
+}
+
+<div class="jumbotron" style="background-color:#4d394b;">
+    <h1 style="color:white; text-align:center;">Detalles de Usuario</h1>
+</div>
+
+<style>
+    /*Color de iconos*/
+    .logo {
+        color: #4d394b;
+        font-size: 50px;
+    }
+</style>
+
+<div class="container-fluid text-center">
+    <br>
+    <div class="row">
+        <div class="col-sm-4">
+            <span class="glyphicon glyphicon-user logo"></span>
+            <h4>Nombre de Usuario:</h4>
+            <h4>@Html.DisplayFor(model => model.Usuario)</h4>
+        </div>
+        <div class="col-sm-4">
+            <span class="glyphicon glyphicon-lock logo"></span>
+            <h4>Contraseña:</h4>
+            <h4>@Html.DisplayFor(model => model.Contrasena)</h4>
+        </div>
+        <div class="col-sm-4">
+            <span class="glyphicon glyphicon-eye-open logo"></span>
+            <h4>Es administrador?</h4>
+            @if (Model.EsAdmin)
+            { <h4>Si</h4> }
+            else
+            { <h4>NO</h4>}
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<div class="row">
+    <!--Boton de guardado, lo centramos con el offset y le decimos que lo alinee al medio con text-center-->
+    <div class="col-md-offset-4 col-md-4 text-center">
+        <button class="btn btn-default">
+            @Html.ActionLink("Volver", "MostrarUsuarios")
+        </button>
+    </div>
+</div>
+

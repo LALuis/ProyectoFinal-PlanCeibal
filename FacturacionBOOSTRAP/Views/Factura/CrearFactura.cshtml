@@ -1,0 +1,92 @@
+﻿@model FacturacionBOOSTRAP.Models.FacturaModel
+
+@{
+    ViewBag.Title = "SF - Crear Factura";
+}
+
+<div class="jumbotron" style="background-color:#4d394b;">
+    <h1 style="color:white; text-align:center;">Crear Factura</h1>
+    <p style="color:white; text-align:center;">Complete los campos para agregar una Factura</p>
+</div>
+
+
+
+
+
+<!--Importamos el estilo de los iconos-->
+<link rel="stylesheet" href="~/Content/EstiloLogos.css" />
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container-fluid text-center text-center">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+                <span class="glyphicon glyphicon-user logo"></span>
+                <h4>Escoja el cliente:</h4>
+                <div class="form-group">
+                    @Html.DropDownListFor(model => model.NumeroCliente, Model.ListaClientes, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <span class="glyphicon glyphicon-tag logo"></span>
+                <h4>Escoja el Producto</h4>
+                <div class="form-group">
+                    @Html.DropDownListFor(model => model.IdProducto, Model.ListaProductos, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <span class="glyphicon glyphicon-check logo"></span>
+                <h4>Ingrese la cantidad</h4>
+                <div class="form-group">
+                    @Html.EditorFor(model => model.Cantidad, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Cantidad, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <br />
+
+    <div class="row">
+        <!--Boton de guardado, lo centramos con el offset y le decimos que lo alinee al medio con text-center-->
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-4 text-center">
+                <input type="submit" value="Agregar" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+<br />
+
+@if (Model != null && Model.Total != 0)
+{
+
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default" style="border-color:#4d394b;">
+            <div class="panel-heading" role="tab" id="headingOne" style="background-color:#4d394b;">
+                <h4 class="panel-title" style="color:#ffffff; text-align: center;">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Listado de Productos
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                    <!--Llamamos al controlador que devuelve la vista parcial con la lista de Facturas correspondiente a nuestro usuario-->
+                    @Html.Partial("_ListaProductos", Model)
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

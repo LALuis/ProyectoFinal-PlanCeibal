@@ -1,0 +1,69 @@
+﻿@model FacturacionBOOSTRAP.Models.ProductoModel
+
+@{
+    ViewBag.Title = "SF - Eliminar Producto";
+}
+
+<!--Importamos el estilo de los iconos-->
+<link rel="stylesheet" href="~/Content/EstiloLogos.css" />
+
+<div class="jumbotron" style="background-color:#4d394b;">
+    <h1 style="color:white; text-align:center;">Eliminar Producto</h1>
+    <p style="color:white; text-align:center;">Seguro que desea eliminar el siguiente producto?</p>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container-fluid text-center text-center">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <br>
+        <div class="row">
+            <div class="col-md-3">
+                <span class="glyphicon glyphicon-qrcode logo"></span>
+                <h4>Codigo del Producto:</h4>
+                <div class="form-group">
+                    @Html.DisplayFor(model => model.Id)
+                </div>
+            </div>
+            <div class="col-md-3">
+                <span class="glyphicon glyphicon-tag logo"></span>
+                <h4>Nombre del Producto:</h4>
+                <div class="form-group">
+                    @Html.DisplayFor(model => model.Nombre)
+                </div>
+            </div>
+            <div class="col-md-3">
+                <span class="glyphicon glyphicon-tags logo"></span>
+                <h4>Marca del Producto:</h4>
+                <div class="form-group">
+                    @Html.DisplayFor(model => model.Marca)
+                </div>
+            </div>
+            <div class="col-md-3">
+                <span class="glyphicon glyphicon-bitcoin logo"></span>
+                <h4>Precio Unitario:</h4>
+                <div class="form-group">
+                    @Html.DisplayFor(model => model.Precio)
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+
+    <div class="row">
+        <!--Boton de guardado, lo centramos con el offset y le decimos que lo alinee al medio con text-center-->
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-4 text-center">
+                <button class="btn btn-danger">
+                    @Html.ActionLink("Eliminar", "ConfirmaEliminarProducto", new { Producto = Model.Id }, new { @Style = "color:white;"})
+                </button>
+                <button class="btn btn-default">
+                    @Html.ActionLink("Cancelar", "MostrarProductos", new { Producto = Model.Id })
+                </button>
+            </div>
+        </div>
+    </div>
+}

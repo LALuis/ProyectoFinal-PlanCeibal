@@ -1,0 +1,64 @@
+﻿@model IEnumerable<FacturacionBOOSTRAP.Models.FacturaModel>
+
+<!--Importamos el estilo de la tabla-->
+<link rel="stylesheet" href="~/Content/BusquedaEnTabla.css" />
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Factura")
+        </th>
+        <th>
+            @Html.DisplayName("Fecha")
+        </th>
+        <th>
+            @Html.DisplayName("Cliente")
+        </th>
+        <th>
+            @Html.DisplayName("Vendedor")
+        </th>
+        <th>
+            @Html.DisplayName("Total")
+        </th>
+        <th><input class="form-control" id="miPalabra" type="text" placeholder="Buscar..."></th>
+    </tr>
+    <tbody id="miTablaF">
+        @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @item.NumeroFactura
+                </td>
+                <td>
+                    @item.Fecha.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumeroCliente) - @Html.DisplayFor(modelItem => item.NombreCliente)
+                </td>
+                <td>
+                    @item.NickUsuario
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total)
+                </td>
+                <td>
+                    @Html.ActionLink("Detalles", "MostrarFactura", new { numeroFactura = item.NumeroFactura }) | 
+                    <a href="@Url.Action("Pdf", "Factura", new { numeroFactura = item.NumeroFactura})" class="btn btn-success" target="_blank">
+                        Imprimir
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@{
+    if (!(Model.Count() > 0))
+    {
+        <p style="text-align:center;"><strong>No hay Facturas para mostrar</strong></p>
+    }
+}
+
+
+<!--Script de busqueda en la tabla-->
+<script src="~/Content/BusquedaEnTablaFacturas.js"></script>

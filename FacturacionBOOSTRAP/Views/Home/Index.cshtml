@@ -1,0 +1,67 @@
+﻿@model IEnumerable<FacturacionBOOSTRAP.Models.UsuarioModel>
+@{
+    ViewBag.Title = "SF - Inicio";
+}
+
+<!--Estilo de Botones-->
+<link href="~/Content/BotonesPersonalizados.css" rel="stylesheet">
+
+<!--Estilo de los logos-->
+<style>
+    .logo-small {
+        color: #4d394b;
+        font-size: 30px;
+    }
+</style>
+
+<header class="jumbotron" style="background-color:#4d394b">
+    <div class="container-fluid">
+        <h1 style="color:#ffffff; text-align: center;">Sistema de Facturación</h1>
+        <p style="color:#ffffff; text-align:center;">Creación e impresión de facturas, adición de productos, control de usuarios y más.</p>
+    </div>
+</header>
+
+<!--Grilla de servicios-->
+<div class="container-fluid text-center">
+    <div class="row">
+        <div class="col-sm-4">
+            <span class="glyphicon glyphicon-list-alt logo-small"></span>
+            <h4>Factura</h4>
+            <p>Agregar nueva factura</p>
+            <a href="@Url.Action("CrearFactura","Factura")" class="btn btn-default">Agregar</a>
+        </div>
+        <div class="col-sm-4">
+            <span class="glyphicon glyphicon-leaf logo-small"></span>
+            <h4>Cliente</h4>
+            <p>Agregar un nuevo cliente</p>
+            <a href="@Url.Action("CrearCliente","Cliente")" class="btn btn-default">Agregar</a>
+        </div>
+        <div class="col-sm-4">
+            <span class="glyphicon glyphicon-tags logo-small"></span>
+            <h4>Productos</h4>
+            <p>Agrega un nuevo Producto</p>
+            <a href="@Url.Action("CrearProducto","Producto")" class="btn btn-default">Agregar</a>
+        </div>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="col-sm-4">
+            <span class="glyphicon glyphicon-stats logo-small"></span>
+            <h4>Datos generales</h4>
+            <p>Consultar los datos del negocio.</p>
+            <a class="btn btn-default" href="@Url.Action("Datos","Home")">Consultar</a>
+        </div>
+        <div class="col-sm-4">
+            <span class="glyphicon glyphicon-search logo-small"></span>
+            <h4>Listas</h4>
+            <p>Consulta los registros</p>
+            <a class="btn btn-default" href="@Url.Action("Buscar","Home")">Consultar</a>
+        </div>
+        <div class="col-sm-4">
+            <span class="glyphicon glyphicon-off logo-small"></span>
+            <h4>Salir</h4>
+            <p>Presione para cerrar sesión</p>
+            <a href="@Url.Action("Logout","Ingreso")" class="btn btn-default">Salir</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+﻿@model IEnumerable<FacturacionBOOSTRAP.Models.ClienteModel>
+
+<!--Importamos el estilo de la tabla-->
+<link rel="stylesheet" href="~/Content/BusquedaEnTabla.css" />
+
+@if (Model.Count() != 0)
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cedula)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Domicilio)
+            </th>
+            <th>
+                @Html.DisplayName("Fecha de Nacimiento")
+            </th>
+            <th>
+                @Html.DisplayName("Registrado por")
+            </th>
+            <th><input class="form-control" id="miBusqueda" type="text" placeholder="Buscar..."></th>
+        </tr>
+        <tbody id="miSeccion">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cedula)
+                    </td>
+                    <td >
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Domicilio)
+                    </td>
+                    <td>
+                        @item.FechaNacimiento.ToString("dd/MM/yyyy")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NickUsuario)
+                    </td>
+                    <td>
+                        <!--Detalles no es necesario porque ya se muestra en la tabla-->
+                        @Html.ActionLink("Editar", "EditarCliente", new { Cliente = item.Cedula }) |
+                        <button class="btn btn-danger">
+                            @Html.ActionLink("Eliminar", "EliminarCliente", new { Cliente = item.Cedula }, new { @style = "text-decoration:none; color:white;" })
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <!--Script de busqueda en la tabla-->
+    <script src="~/Content/BusquedaEnTablaClientes.js"></script>
+}
+else
+{
+    <!--Creamos las cabeceras pero el contenido esta vacio-->
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayName("Cedula")
+            </th>
+            <th>
+                @Html.DisplayName("Nombre")
+            </th>
+            <th>
+                @Html.DisplayName("Domicilio")
+            </th>
+            <th>
+                @Html.DisplayName("Fecha de nacimiento")
+            </th>
+            <th>
+                @Html.DisplayName("Registrado por")
+            </th>
+        </tr>
+    </table>
+    <p style="text-align:center;"><strong>No hay clientes para mostrar</strong></p>
+}

@@ -1,0 +1,78 @@
+﻿@model FacturacionBOOSTRAP.Models.ClienteModel
+
+@{
+    ViewBag.Title = "SF - Editar Cliente";
+}
+
+<!--Importamos el estilo de los iconos-->
+<link rel="stylesheet" href="~/Content/EstiloLogos.css" />
+
+<div class="jumbotron" style="background-color:#4d394b;">
+    <h1 style="color:white; text-align:center;">Editar Cliente</h1>
+    <p style="color:white; text-align:center;">Complete los campos para editar su cliente.</p>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <!--Fijamos los datos que no se pueden editar-->
+    @Html.HiddenFor(model => model.Cedula)
+    @Html.HiddenFor(model => model.NickUsuario)
+    @Html.HiddenFor(model => model.FechaNacimiento)
+
+    <div class="container-fluid text-center text-center">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <br>
+        <div class="row">
+            <div class="col-md-3">
+                <span class="glyphicon glyphicon-briefcase logo"></span>
+                <h4>Cedula del Cliente:</h4>
+                <div class="form-group">
+                    @Html.TextBoxFor(model => model.Cedula, new { @class = "form-control", disabled = "disabled;" })
+                </div>
+            </div>
+            <div class="col-md-3">
+                <span class="glyphicon glyphicon-calendar logo"></span>
+                <h4>Fecha de Nacimiento:</h4>
+                <div class="form-group">
+                    @Html.TextBoxFor(model => model.FechaNacimiento, new { @class = "form-control", disabled = "disabled;" })
+                </div>
+            </div>
+            <div class="col-md-3">
+                <span class="glyphicon glyphicon-user logo"></span>
+                <h4>Nombre del Cliente:</h4>
+                <div class="form-group">
+                    @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-3">
+                <span class="glyphicon glyphicon-home logo"></span>
+                <h4>Domicilio del Cliente:</h4>
+                <div class="form-group">
+                    @Html.EditorFor(model => model.Domicilio, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Domicilio, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+
+    <div class="row">
+        <!--Boton de guardado, lo centramos con el offset y le decimos que lo alinee al medio con text-center-->
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-4 text-center">
+                <input type="submit" value="Agregar" class="btn btn-success" />
+                <button class="btn btn-default">
+                    @Html.ActionLink("Cancelar", "MostrarClientes", "Cliente")
+                </button>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

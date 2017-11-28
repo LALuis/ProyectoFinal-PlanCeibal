@@ -1,0 +1,75 @@
+﻿@model FacturacionBOOSTRAP.Models.UsuarioModel
+
+@{
+    ViewBag.Title = "SF - Crear Usuario";
+}
+
+
+
+
+<div class="jumbotron" style="background-color:#4d394b;">
+    <h1 style="color:white; text-align:center;">Crear Usuario</h1>
+    <h4 style="color:white; text-align:center;">Complete los datos para agregar un usuario</h4>
+</div>
+
+<!--Importamos el estilo de los iconos-->
+<link rel="stylesheet" href="~/Content/EstiloLogos.css" />
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container-fluid text-center text-center">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <br>
+        <div class="row">
+            <div class="col-sm-4">
+                <span class="glyphicon glyphicon-user logo"></span>
+                <h4>Nombre de Usuario:</h4>
+                <div class="form-group">
+                    @Html.EditorFor(model => model.Usuario, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Usuario, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-sm-4 text-center">
+                <span class="glyphicon glyphicon-lock logo"></span>
+                <h4>Contraseña:</h4>
+                <div class="form-group text-center">
+                    @Html.EditorFor(model => model.Contrasena, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Contrasena, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-sm-4 text-center">
+                <span class="glyphicon glyphicon-eye-open logo"></span>
+                <h4>Es administrador?</h4>
+                <div class="checkbox" style="margin-left:30px;">
+                    @Html.EditorFor(model => model.EsAdmin)
+                    @Html.ValidationMessageFor(model => model.EsAdmin, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <br />
+    
+    <div class="row">
+        <!--Boton de guardado-->
+        <div class="form-group col-md-offset-5 media-middle">
+                <input type="submit" value="Agregar" class="btn btn-success" />
+                <button class="btn btn-default">
+                    @Html.ActionLink("Volver", "MenuNuevo", "Home")
+                </button>
+        </div>
+    </div>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "SF - Editar";
+}
+<!--Declaramos una variable que contendra el usuario de nuestra session-->
+@{
+    FacturacionBOOSTRAP.Models.UsuarioModel usuarioActual = (FacturacionBOOSTRAP.Models.UsuarioModel)Session["Logueado"];
+}
+<!--Importamos el diseño del panel-->
+<link href="~/Content/PanelesMenuNuevo.css" rel="stylesheet" />
+<!--DAMOS MARGEN SUPERIOR-->
+<div class="row">
+    <br /><br /><br /><br />
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="panel panel-default text-center">
+                <div class="panel-heading">
+                    <h1>Producto</h1>
+                </div>
+                <div class="panel-body">
+                    <h3><span class="glyphicon glyphicon-tag" style="font-size:50px;color:#4d394b;"></span></h3>
+                </div>
+                <div class="panel-footer">
+                    <h4>Haga click para editar sus productos.</h4>
+                    <a href="@Url.Action("MostrarProductos","Producto")" class="btn btn-lg">Editar | Eliminar</a>
+                    <a href="@Url.Action("MostrarProductosDeshabilitados","Producto")" class="btn btn-lg">Habilitar</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default text-center">
+                <div class="panel-heading">
+                    <h1>Usuario</h1>
+                </div>
+                <div class="panel-body">
+                    <h3><span class="glyphicon glyphicon-user" style="font-size:50px;color:#4d394b;"></span></h3>
+                </div>
+                <div class="panel-footer">
+
+                    <h4>Haga click para editar sus usuarios.</h4>
+                    @if (usuarioActual != null && usuarioActual.EsAdmin == true)
+                    {
+                        <a href="@Url.Action("MostrarUsuarios", "Usuario")" class="btn btn-lg">Editar | Eliminar</a>
+                        <a href="@Url.Action("MostrarUsuariosDeshabilitados","Usuario")" class="btn btn-lg">Habilitar</a>
+                    }
+                    else
+                    {
+                        /*El usuario no es administrador, por lo tanto no puede acceder(Hover es para que se muestre cuando pasamos por arriba con el mouse)*/
+                        <a href="#!" class="btn btn-lg" title="Acceso Restringido" data-trigger="hover" data-toggle="popover" data-content="Contenido disponible solo para administradores">Editar | Eliminar</a>
+                        <a href="#!" class="btn btn-lg" title="Acceso Restringido" data-trigger="hover" data-toggle="popover" data-content="Contenido disponible solo para administradores">Habilitar</a>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default text-center">
+                <div class="panel-heading">
+                    <h1>Cliente</h1>
+                </div>
+                <div class="panel-body">
+                    <h3><span class="glyphicon glyphicon-eye-open" style="font-size:50px;color:#4d394b;"></span></h3>
+                </div>
+                <div class="panel-footer">
+
+                    <h4>Haga click para editar sus clientes</h4>
+                    <a href="@Url.Action("MostrarClientes","Cliente")" class="btn btn-lg">Editar | Eliminar</a>
+                    <a href="@Url.Action("MostrarClientesDeshabilitados","Cliente")" class="btn btn-lg">Habilitar</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--Script popover contenido de administradores-->
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="popover"]').popover();
+    });
+</script>

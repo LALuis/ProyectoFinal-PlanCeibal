@@ -1,0 +1,3 @@
+Aqui se adjunta el script de la base de datos con algunos casos de prueba.
+
+SI O SI se debe crear el superadmin, ya que es el usuario principal y no se puede eliminar del sistema

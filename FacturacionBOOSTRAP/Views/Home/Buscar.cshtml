@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "SF - Listas";
+}
+
+
+<div class="container-fluid">
+    <header class="jumbotron" style="background-color:#4d394b">
+        <div class="container-fluid">
+            <h1 style="color:#ffffff; text-align: center;">Listados</h1>
+        </div>
+    </header>
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default"  style="border-color:#4d394b;">
+            <div class="panel-heading" role="tab" id="headingOne" style="background-color:#4d394b;">
+                <h4 class="panel-title" style="color:#ffffff; text-align: center;">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Facturas
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                    <!--Llamamos al controlador que devuelve la vista parcial con la lista de Facturas-->
+                    @{ Html.RenderAction("ListadoFacturas", "Factura");}
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default" style="border-color:#4d394b;">
+            <div class="panel-heading" role="tab" id="headingTwo" style="background-color:#4d394b;">
+                <h4 class="panel-title" style="color:#ffffff; text-align: center;" >
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Productos
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="panel-body">
+                    <!--Llamamos al controlador que devuelve la vista parcial con la lista de productos-->
+                    @{ Html.RenderAction("ListadoProductos", "Producto");}
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default" style="border-color:#4d394b;">
+            <div class="panel-heading" role="tab" id="headingThree" style="background-color:#4d394b;">
+                <h4 class="panel-title" style="color:#ffffff; text-align: center;">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Clientes
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body">
+                    <!--Llamamos al controlador que devuelve la vista parcial con la lista de clientes-->
+                    @{ Html.RenderAction("ListadoClientes", "Cliente");}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

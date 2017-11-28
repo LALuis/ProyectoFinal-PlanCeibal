@@ -1,0 +1,6 @@
+c:\users\admin.portable\documents\visual studio 2017\Projects\FacturacionBOOSTRAP\EC\bin\Debug\EC.dll
+c:\users\admin.portable\documents\visual studio 2017\Projects\FacturacionBOOSTRAP\EC\bin\Debug\EC.pdb
+c:\users\admin.portable\documents\visual studio 2017\Projects\FacturacionBOOSTRAP\EC\obj\Debug\EC.csproj.CoreCompileInputs.cache
+c:\users\admin.portable\documents\visual studio 2017\Projects\FacturacionBOOSTRAP\EC\obj\Debug\EC.dll
+c:\users\admin.portable\documents\visual studio 2017\Projects\FacturacionBOOSTRAP\EC\obj\Debug\EC.pdb
+C:\Users\Admin.PORTABLE\Documents\Visual Studio 2017\Projects\FacturacionBOOSTRAP\EC\obj\Debug\EC.csprojResolveAssemblyReference.cache

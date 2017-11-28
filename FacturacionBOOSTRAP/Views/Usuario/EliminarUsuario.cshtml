@@ -1,0 +1,51 @@
+﻿@model FacturacionBOOSTRAP.Models.UsuarioModel
+
+@{
+    ViewBag.Title = "SF - EliminarUsuario";
+}
+
+<div class="jumbotron" style="background-color:#4d394b;">
+    <h1 style="color:white; text-align:center;">Eliminar Usuario</h1>
+    <h4 style="color:white; text-align:center;">Seguro que desea eliminar el usuario "@Model.Usuario" ?</h4>
+</div>
+
+<style>
+    /*Color de iconos*/
+    .logo {
+        color: #4d394b;
+        font-size: 50px;
+    }
+</style>
+
+<div class="container-fluid text-center">
+    <br>
+    <div class="row">
+        <div class="col-sm-4">
+            <span class="glyphicon glyphicon-user logo"></span>
+            <h4>Nombre de Usuario:</h4>
+            <h4>@Html.DisplayFor(model => model.Usuario)</h4>
+        </div>
+        <div class="col-sm-4">
+            <span class="glyphicon glyphicon-lock logo"></span>
+            <h4>Contraseña:</h4>
+            <h4>@Html.DisplayFor(model => model.Contrasena)</h4>
+        </div>
+        <div class="col-sm-4">
+            <span class="glyphicon glyphicon-eye-open logo"></span>
+            <h4>Es administrador?</h4>
+            @if (Model.EsAdmin)
+            { <h4>Si</h4> }
+            else
+            { <h4>NO</h4>}
+        </div>
+    </div>
+</div>
+<br />
+<div class="btn-group col-md-offset-5 media-middle">
+    <button class="btn btn-danger" >
+        @Html.ActionLink("Eliminar", "ConfirmaEliminarUsuario", new { Usuario = Model.Usuario }, new { @style = "text-decoration:none; color:white;" })
+    </button>
+    <button class="btn btn-default">
+        @Html.ActionLink("Cancelar", "MostrarUsuarios")
+    </button>
+</div>

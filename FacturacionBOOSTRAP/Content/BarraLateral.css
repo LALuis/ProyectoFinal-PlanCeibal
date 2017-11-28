@@ -1,0 +1,47 @@
+﻿.sidebar {
+    background-color: #4d394b;
+    color: #918590;
+    margin-top: 0px;
+    position: fixed;
+    /*Colocamos la capa*/
+    z-index: 1000;
+    /*Distancia de arriba y abajo*/
+    bottom: 0px;
+    top: 0px;
+    /*Quitamos los espacios laterales dentro de la barra*/
+    padding: 0;
+}
+
+.botones {
+    /*Quitamos las viñetas*/
+    list-style: none;
+    /*Quitamos la Sangria*/
+    padding: 0px;
+}
+
+/*Diseñamos los botones*/
+.miboton {
+    text-decoration: none;
+    text-align: center;
+    padding: 5px;
+    font-family: Century;
+    font-size: 150%;
+    color: #ffffff;
+    background-color: #4d394b;
+}
+    /*Retocamos el diseño de los link de mi boton*/
+    .miboton a {
+        text-align: center;
+        text-decoration: none;
+        color: #ffffff;
+    }
+        /*Retocamos el tamaño del simbolo de mi boton*/
+        .miboton a i {
+            font-size: 30px;
+        }
+    /*Estilizamos el boton a la hora de pasar el mouse por arriba*/
+    .miboton:hover {
+        color: #918590;
+        background-color: #3b2e3a;
+        text-decoration: none;
+    }

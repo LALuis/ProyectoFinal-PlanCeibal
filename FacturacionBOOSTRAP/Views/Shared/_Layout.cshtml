@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Colocamos el icono que creamos para la pestaña-->
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/img/1626Logomin.ico">
+
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    <!--Importamos los iconos de Google para el menu-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--Importamos la hoja que creamos para la barra lateral-->
+    <link href="~/Content/BarraLateral.css" rel="stylesheet" />
+    <!--Importamos la hoja de estilos que creamos para el menu que se muestra al pulsar MENU-->
+    <link href="~/Content/BarraOculta.css" rel="stylesheet" />
+    <!--Declaramos una variable que contendra el usuario de nuestra session-->
+    @{ 
+        FacturacionBOOSTRAP.Models.UsuarioModel usuarioActual = (FacturacionBOOSTRAP.Models.UsuarioModel)Session["Logueado"];
+    }
+
+</head>
+<body class="main">
+
+    <!--Barra de navegacion oculta-->
+    <div id="mySidenav" class="sidenavOcu">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="@Url.Action("Index","Home")">Inicio</a>
+        <a href="@Url.Action("MenuNuevo","Home")">Nuevo</a>
+        <a href="@Url.Action("MenuEditar","Home")">Editar</a>
+        <a href="@Url.Action("Buscar","Home")">Buscar</a>
+        @if (usuarioActual != null && usuarioActual.EsAdmin == true)
+        {
+            <a href="@Url.Action("Historial","Home")">Historial</a>
+            <a href="@Url.Action("Datos","Home")">Datos</a>
+        }
+        <a href="@Url.Action("CrearFactura","Factura")">Factura</a>
+        <a href="@Url.Action("CrearProducto","Producto")">Producto</a>
+        <a href="@Url.Action("CrearCliente","Cliente")">Cliente</a>
+        @if (usuarioActual != null && usuarioActual.EsAdmin == true)
+        {
+            <a href="@Url.Action("CrearUsuario","Usuario")">Usuario</a>
+        }
+    </div>
+
+
+    <!--Barra de Navegacion-->
+    <!--Abarcara el 100% de la pantalla por lo tanto container fluid`-->
+    <div class="container-fluid">
+        <!--Creamos una columna-->
+        <div class="row">
+            <!--Especificamos su tamaño para barra lateral izquierda-->
+            <div class="col-md-1 sidebar fixed">
+                <ul class="botones">
+                    <li class="miboton" onclick="openNav()"><a href="#!"><i class="material-icons" style=" font-size:30px;">dehaze</i><br />Menu</a></li>
+                    <li class="miboton"><a href="@Url.Action("Index","Home")"><i class="material-icons">home</i><br />Inicio</a></li>
+                    <li class="miboton"><a href="@Url.Action("MenuNuevo","Home")"><i class="material-icons">add_box</i><br />Nuevo</a></li>
+                    <li class="miboton"><a href="@Url.Action("MenuEditar","Home")"><i class="material-icons">border_color</i><br />Editar</a></li>
+                    <li class="miboton"><a href="@Url.Action("Buscar","Home")"><i class="material-icons">search</i><br />Listas</a></li>
+                    <!--Contenido de administrador. Verificar que sea admin-->
+                    <li class="miboton">
+                        <!--Comprobamos que el usuario sea administrador para poder redireccionar-->
+                        @if (usuarioActual != null && usuarioActual.EsAdmin == true)
+                        {
+                            <a href="@Url.Action("Datos","Home")"><i class="glyphicon glyphicon-stats logo-small" style="color:#ffffff"></i><br />Datos</a>
+                        }
+                        else
+                        {
+                            /*El usuario no es administrador, por lo tanto no puede acceder(Hover es para que se muestre cuando pasamos por arriba con el mouse)*/
+                            <a href="#!" title="Acceso Restringido" data-trigger="hover" data-toggle="popover" data-content="Contenido disponible solo para administradores"><i class="glyphicon glyphicon-stats logo-small" style="color:#ffffff"></i><br />Datos</a>
+                        }
+                    </li>
+
+                    <!--Contenido de administrador. Verificar que sea admin-->
+                    <li class="miboton">
+                        <!--Comprobamos que el usuario sea administrador para poder redireccionar-->
+                        @if (usuarioActual != null && usuarioActual.EsAdmin == true)
+                        {
+                            <a href="@Url.Action("Historial","Home")"><i class="material-icons">history</i><br />Historial</a>
+                        }
+                        else
+                        {
+                            /*El usuario no es administrador, por lo tanto no puede acceder(Hover es para que se muestre cuando pasamos por arriba con el mouse)*/
+                            <a href="#!" title="Acceso Restringido" data-trigger="hover" data-toggle="popover" data-content="Contenido disponible solo para administradores"><i class="material-icons">history</i><br />Historial</a>
+                        }
+                    </li>
+                    <li class="miboton" disabled="disabled"><a href="@Url.Action("Logout","Ingreso")"><i class="material-icons">power_settings_new</i><br />Salir</a></li>
+                </ul>
+            </div>
+            <!--Especificamos el tamaño que tendra el espacio del contenido de mi pagina-->
+            <div class="col-md-11 col-md-offset-1">
+                <!--Comienza el Body-->
+                @RenderBody()
+                <!--Finaliza el body,-->
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!--Script del menu oculto-->
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+        }
+    </script>
+
+    <!--Script popover contenido de administradores-->
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="popover"]').popover();
+        });
+    </script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,12 @@
+﻿@model IEnumerable<FacturacionBOOSTRAP.Models.ProductoModel>
+
+@{
+    ViewBag.Title = "SF - Productos Deshabilitados";
+}
+
+<div class="jumbotron" style="background-color:#4d394b;">
+    <h1 style="color:white; text-align:center;">Productos Deshabilitados</h1>
+    <p style="color:white; text-align:center;">Lista de productos dados de baja.</p>
+</div>
+
+@Html.Partial("_ListadoProductosDeshab",Model)

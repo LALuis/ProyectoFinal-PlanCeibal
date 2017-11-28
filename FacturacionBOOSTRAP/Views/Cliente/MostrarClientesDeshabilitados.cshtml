@@ -1,0 +1,12 @@
+﻿@model IEnumerable<FacturacionBOOSTRAP.Models.ClienteModel>
+
+@{
+    ViewBag.Title = "SF - Clientes Deshabilitados";
+}
+
+<div class="jumbotron" style="background-color:#4d394b;">
+    <h1 style="color:white; text-align:center;">Clientes Deshabilitados</h1>
+    <p style="color:white; text-align:center;">Lista de clientes dados de baja.</p>
+</div>
+
+@Html.Partial("_ListadoClientesDeshab",Model)

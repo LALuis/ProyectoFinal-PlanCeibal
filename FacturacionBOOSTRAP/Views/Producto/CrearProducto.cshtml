@@ -1,0 +1,75 @@
+﻿@model FacturacionBOOSTRAP.Models.ProductoModel
+
+@{
+    ViewBag.Title = "SF - CrearProducto";
+}
+
+<!--Importamos el estilo de los iconos-->
+<link rel="stylesheet" href="~/Content/EstiloLogos.css" />
+
+<div class="jumbotron" style="background-color:#4d394b;">
+    <h1 style="color:white; text-align:center;">Crear Producto</h1>
+    <p style="color:white; text-align:center;">Complete los campos para agregar un producto</p>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container-fluid text-center text-center">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <br>
+        <div class="row">
+            <div class="col-md-3">
+                <span class="glyphicon glyphicon-qrcode logo"></span>
+                <h4>Codigo del Producto:</h4>
+                <div class="form-group">
+                    @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-3">
+                <span class="glyphicon glyphicon-tag logo"></span>
+                <h4>Nombre del Producto:</h4>
+                <div class="form-group">
+                    @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-3">
+                <span class="glyphicon glyphicon-tags logo"></span>
+                <h4>Ingrese la Marca:</h4>
+                <div class="form-group">
+                    @Html.EditorFor(model => model.Marca, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Marca, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-3">
+                <span class="glyphicon glyphicon-bitcoin logo"></span>
+                <h4>Ingrese el Precio:</h4>
+                <div class="form-group">
+                    @Html.EditorFor(model => model.Precio, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Precio, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+
+    <div class="row">
+        <!--Boton de guardado, lo centramos con el offset y le decimos que lo alinee al medio con text-center-->
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-4 text-center">
+                <input type="submit" value="Agregar" class="btn btn-success" />
+                <button class="btn btn-default">
+                    @Html.ActionLink("Cancelar", "MenuNuevo", "Home")
+                </button>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

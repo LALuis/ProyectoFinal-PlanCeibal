@@ -1,0 +1,49 @@
+﻿/*Creamos el contorno del panel*/
+.panel {
+    border: 1px solid #4d394b;
+    border-radius: 0;
+    transition: box-shadow 0.5s;
+}
+    /*Creamos la sombra al pasar por arriba*/
+    .panel:hover {
+        box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+    }
+
+/*Creamos el comportamiento del boton al pasar por arriba*/
+.panel-footer .btn:hover {
+    border: 1px solid #4d394b;
+    background-color: #fff !important;
+    color: #4d394b;
+}
+
+/*Creamos la cabecera del panel*/
+.panel-heading {
+    color: #fff !important;
+    background-color: #4d394b !important;
+    padding: 25px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+/*Creamos el pie del panel (donde ira el boton)*/
+.panel-footer {
+    background-color: #fff !important;
+}
+
+    .panel-footer h3 {
+        font-size: 32px;
+    }
+
+    .panel-footer h4 {
+        color: #aaa;
+        font-size: 14px;
+    }
+
+    .panel-footer .btn {
+        margin: 15px 0;
+        background-color: #4d394b;
+        color: #fff;
+    }

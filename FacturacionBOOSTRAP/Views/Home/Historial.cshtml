@@ -1,0 +1,60 @@
+﻿@model FacturacionBOOSTRAP.Models.UsuarioModel
+
+@{
+    ViewBag.Title = "SF - Historial";
+}
+
+<!--Importamos el estilo de los iconos-->
+<link rel="stylesheet" href="~/Content/EstiloLogos.css" />
+
+<!--Historial de Usuario-->
+<header class="jumbotron" style="background-color:#4d394b">
+    <div class="container-fluid">
+        <h1 style="color:#ffffff; text-align: center;">Historial de Usuario</h1>
+    </div>
+</header>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 text-center">
+                <span class="glyphicon glyphicon-user logo"></span>
+                <h4>Seleccione el Usuario:</h4>
+                <div class="form-group">
+                    @Html.DropDownListFor(model => model.Usuario, Model.ListaUsuarios, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+    </div>
+        <!--Lista de productos creada con selectlistitem-->
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.Usuario, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Usuario, Model.ListaUsuarios, new { @class = "form-control" })
+            </div>
+        </div>*@
+
+        <div class="row">
+            <!--Boton de guardado, lo centramos con el offset y le decimos que lo alinee al medio con text-center-->
+            <div class="form-group">
+                <div class="col-md-offset-4 col-md-4 text-center">
+                    <input type="submit" value="Buscar" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+        <br />
+        
+}
+
+<!--Lamamos a una partial que a su vez tiene 3 partial dentro: Facturas, Productos, clientes-->
+@{
+    if (Model != null && Model.Usuario != null)
+    {
+        Html.RenderAction("HistorialUsuario", "Usuario", new { Usuario = Model.Usuario });
+    }
+}

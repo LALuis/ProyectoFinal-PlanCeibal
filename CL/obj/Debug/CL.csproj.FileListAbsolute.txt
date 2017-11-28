@@ -1,0 +1,13 @@
+c:\users\admin.portable\documents\visual studio 2017\Projects\FacturacionBOOSTRAP\CL\bin\Debug\CL.dll
+c:\users\admin.portable\documents\visual studio 2017\Projects\FacturacionBOOSTRAP\CL\bin\Debug\CL.pdb
+c:\users\admin.portable\documents\visual studio 2017\Projects\FacturacionBOOSTRAP\CL\bin\Debug\CD.dll
+c:\users\admin.portable\documents\visual studio 2017\Projects\FacturacionBOOSTRAP\CL\bin\Debug\EC.dll
+c:\users\admin.portable\documents\visual studio 2017\Projects\FacturacionBOOSTRAP\CL\bin\Debug\EntityFramework.dll
+c:\users\admin.portable\documents\visual studio 2017\Projects\FacturacionBOOSTRAP\CL\bin\Debug\CD.pdb
+c:\users\admin.portable\documents\visual studio 2017\Projects\FacturacionBOOSTRAP\CL\bin\Debug\CD.dll.config
+c:\users\admin.portable\documents\visual studio 2017\Projects\FacturacionBOOSTRAP\CL\bin\Debug\EC.pdb
+c:\users\admin.portable\documents\visual studio 2017\Projects\FacturacionBOOSTRAP\CL\bin\Debug\EntityFramework.xml
+c:\users\admin.portable\documents\visual studio 2017\Projects\FacturacionBOOSTRAP\CL\obj\Debug\CL.csprojResolveAssemblyReference.cache
+c:\users\admin.portable\documents\visual studio 2017\Projects\FacturacionBOOSTRAP\CL\obj\Debug\CL.csproj.CoreCompileInputs.cache
+c:\users\admin.portable\documents\visual studio 2017\Projects\FacturacionBOOSTRAP\CL\obj\Debug\CL.dll
+c:\users\admin.portable\documents\visual studio 2017\Projects\FacturacionBOOSTRAP\CL\obj\Debug\CL.pdb

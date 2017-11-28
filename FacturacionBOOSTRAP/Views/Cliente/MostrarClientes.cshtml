@@ -1,0 +1,13 @@
+﻿@model IEnumerable<FacturacionBOOSTRAP.Models.ClienteModel>
+
+@{
+    ViewBag.Title = "SF - Listado de Clientes";
+}
+
+<div class="jumbotron" style="background-color:#4d394b;">
+    <h1 style="color:white; text-align:center;">Lista de Clientes</h1>
+    <p style="color:white; text-align:center;">Lista de clientes habilitados.</p>
+</div>
+
+<!--Mostramos la vista parcial que muestra el listado de clientes-->
+@Html.Partial("_ListadoClientes", Model)

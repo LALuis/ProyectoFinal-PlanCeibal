@@ -1,0 +1,15 @@
+﻿.btn {
+    /*Color del borde del boton*/
+    border-color: #4d394b;
+    /*Color de fondo del boton*/
+    background-color: #4d394b;
+    /*Color de los textos*/
+    color: #fff;
+}
+
+    .btn:hover {
+        /*Color de fondo al pasar por arriba*/
+        background-color: #fff !important;
+        /*Color de textos al pasar por arriba*/
+        color: #4d394b;
+    }
